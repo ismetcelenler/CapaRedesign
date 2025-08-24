@@ -1,128 +1,147 @@
-import { SelectNews, SelectProject, SelectTeam, InsertNews, InsertProject, InsertTeam } from '../shared/schema';
+import { type User, type InsertUser, type ContactMessage, type InsertContactMessage, type NewsItem, type Event } from "@shared/schema";
+import { randomUUID } from "crypto";
 
 export interface IStorage {
-  // News operations
-  getNews(): Promise<SelectNews[]>;
-  getNewsById(id: number): Promise<SelectNews | null>;
-  createNews(news: InsertNews): Promise<SelectNews>;
-  
-  // Project operations
-  getProjects(): Promise<SelectProject[]>;
-  getProjectById(id: number): Promise<SelectProject | null>;
-  createProject(project: InsertProject): Promise<SelectProject>;
-  
-  // Team operations
-  getTeam(): Promise<SelectTeam[]>;
-  getTeamById(id: number): Promise<SelectTeam | null>;
-  createTeamMember(member: InsertTeam): Promise<SelectTeam>;
+  getUser(id: string): Promise<User | undefined>;
+  getUserByUsername(username: string): Promise<User | undefined>;
+  createUser(user: InsertUser): Promise<User>;
+  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  getContactMessages(): Promise<ContactMessage[]>;
+  getNewsItems(limit?: number): Promise<NewsItem[]>;
+  getEvents(upcoming?: boolean): Promise<Event[]>;
 }
 
-// In-memory storage implementation
 export class MemStorage implements IStorage {
-  private news: SelectNews[] = [
-    {
-      id: 1,
-      title: "Definitive approval of CAPA as UNIZAR Research Institute",
-      excerpt: "The Governing Council of the University of Zaragoza has definitively approved the creation of the Center for Astroparticles and High Energies (CAPA).",
-      content: "The Governing Council of the University of Zaragoza has definitively approved the creation of the Center for Astroparticles and High Energies (CAPA), as well as its internal regulations. The fundamental objective of the University Research Institute Center for Astroparticles and High Energy Physics is to promote research in the fields of high-energy physics, nuclear and particle physics.",
-      createdAt: new Date('2024-01-15'),
-    },
-    {
-      id: 2,
-      title: "Dark Quantum in the Tercer Milenio science supplement",
-      excerpt: "The DarkQuantum project, coordinated from CAPA, was recently featured in the Tercer Milenio science section.",
-      content: "The DarkQuantum project, coordinated from the Center for Astroparticles and High Energy Physics (CAPA) at the University of Zaragoza, was recently featured in the Tercer Milenio science section of the newspaper Heraldo de Aragón. The article highlights the project's innovative approach, combining quantum technologies and particle physics.",
-      createdAt: new Date('2024-01-10'),
-    },
-  ];
+  private users: Map<string, User>;
+  private contactMessages: Map<string, ContactMessage>;
+  private newsItems: Map<string, NewsItem>;
+  private events: Map<string, Event>;
 
-  private projects: SelectProject[] = [
-    {
-      id: 1,
-      title: "DarkQuantum Project",
-      description: "Combining quantum technologies and particle physics to tackle one of the greatest mysteries of the universe",
-      category: "Dark Matter Research",
-      status: "active",
-    },
-    {
-      id: 2,
-      title: "Ultra-high-energy cosmic messengers",
-      description: "Research on the origins of the most energetic particles in the Universe",
-      category: "Cosmic Ray Physics",
-      status: "active",
-    },
-  ];
-
-  private teamMembers: SelectTeam[] = [
-    {
-      id: 1,
-      name: "Prof. Jacobo Asorey Barreiro",
-      position: "Principal Investigator",
-      description: "Leading researcher in astroparticle physics and cosmology",
-      email: "jacobo.asorey@unizar.es",
-    },
-    {
-      id: 2,
-      name: "Rafael Alves Batista",
-      position: "Visiting Professor",
-      description: "Expert in ultra-high-energy cosmic ray physics",
-      email: null,
-    },
-  ];
-
-  // News methods
-  async getNews(): Promise<SelectNews[]> {
-    return [...this.news].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+  constructor() {
+    this.users = new Map();
+    this.contactMessages = new Map();
+    this.newsItems = new Map();
+    this.events = new Map();
+    
+    this.initializeData();
   }
 
-  async getNewsById(id: number): Promise<SelectNews | null> {
-    return this.news.find(n => n.id === id) || null;
+  private initializeData() {
+    // Initialize with real CAPA news items
+    const newsData: Omit<NewsItem, 'id'>[] = [
+      {
+        title: "Definitive approval of CAPA as UNIZAR Research Institute",
+        excerpt: "The Governing Council of the University of Zaragoza has definitively approved the creation of the Center for Astroparticles and High Energies (CAPA), as well as its internal regulations.",
+        content: "The Governing Council of the University of Zaragoza has definitively approved the creation of the Center for Astroparticles and High Energies (CAPA), as well as its internal regulations. The fundamental objective of the University Research Institute Center for Astroparticles and High Energy Physics is to promote research in the fields of high-energy physics, nuclear and astroparticle physics.",
+        imageUrl: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        publishedAt: new Date('2024-12-15'),
+        isPublished: true
+      },
+      {
+        title: "Dark Quantum in the Tercer Milenio science supplement",
+        excerpt: "The DarkQuantum project, coordinated from CAPA, was recently featured in the Tercer Milenio science section of Heraldo de Aragón.",
+        content: "The DarkQuantum project, coordinated from the Center for Astroparticles and High Energy Physics (CAPA) at the University of Zaragoza, was recently featured in the Tercer Milenio science section of the newspaper Heraldo de Aragón. The article highlights the project's innovative approach, combining quantum technologies and particle physics to tackle one of the greatest mysteries of the universe.",
+        imageUrl: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        publishedAt: new Date('2024-12-10'),
+        isPublished: true
+      },
+      {
+        title: "Ultra-high-energy cosmic messengers",
+        excerpt: "Rafael Alves Batista delivered an insightful talk on the origins of the most energetic particles in the Universe.",
+        content: "Professor Rafael Alves Batista from Institut d'Astrophysique de Paris at the Sorbonne Université presented a comprehensive overview of ultra-high-energy cosmic messengers. The origins of the most energetic particles in the Universe have been a long-standing puzzle. In the quest to identify their sources, it is crucial to understand how these particles propagate through space.",
+        imageUrl: "https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+        publishedAt: new Date('2024-12-05'),
+        isPublished: true
+      }
+    ];
+
+    newsData.forEach(item => {
+      const id = randomUUID();
+      this.newsItems.set(id, { ...item, id });
+    });
+
+    // Initialize with real CAPA events
+    const eventsData: Omit<Event, 'id' | 'createdAt'>[] = [
+      {
+        title: "DESI-Y1: New light on the dark Universe",
+        description: "The beginning of the 21st century brought the development and confirmation of the standard model of cosmology, LCDM. The Universe is made of a 70% of dark energy in the form of a cosmological constant.",
+        speaker: "Dr. Eusebio Sánchez, CIEMAT",
+        eventDate: new Date('2025-01-15T15:00:00'),
+        location: "CAPA Auditorium",
+        registrationUrl: "https://capa.unizar.es/events/register"
+      },
+      {
+        title: "Ultra-high-energy cosmic messengers",
+        description: "The origins of the most energetic particles in the Universe have been a long-standing puzzle. Understanding their sources and propagation mechanisms.",
+        speaker: "Dr. Rafael Alves Batista, Institut d'Astrophysique de Paris",
+        eventDate: new Date('2025-01-22T16:00:00'),
+        location: "Universidad de Zaragoza",
+        registrationUrl: "https://capa.unizar.es/events/register"
+      },
+      {
+        title: "DarkQuantum Project Workshop",
+        description: "Intensive workshop on quantum technologies and particle physics applications. Collaborative research opportunities and latest developments in the field.",
+        speaker: "CAPA Research Team",
+        eventDate: new Date('2025-02-05T09:00:00'),
+        location: "CAPA Research Facilities",
+        registrationUrl: "https://capa.unizar.es/events/register"
+      }
+    ];
+
+    eventsData.forEach(item => {
+      const id = randomUUID();
+      this.events.set(id, { ...item, id, createdAt: new Date() });
+    });
   }
 
-  async createNews(news: InsertNews): Promise<SelectNews> {
-    const newNews: SelectNews = {
-      id: Math.max(...this.news.map(n => n.id)) + 1,
+  async getUser(id: string): Promise<User | undefined> {
+    return this.users.get(id);
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    return Array.from(this.users.values()).find(
+      (user) => user.username === username,
+    );
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const id = randomUUID();
+    const user: User = { ...insertUser, id };
+    this.users.set(id, user);
+    return user;
+  }
+
+  async createContactMessage(insertMessage: InsertContactMessage): Promise<ContactMessage> {
+    const id = randomUUID();
+    const message: ContactMessage = {
+      ...insertMessage,
+      id,
       createdAt: new Date(),
-      ...news,
+      isRead: false,
     };
-    this.news.push(newNews);
-    return newNews;
+    this.contactMessages.set(id, message);
+    return message;
   }
 
-  // Project methods
-  async getProjects(): Promise<SelectProject[]> {
-    return [...this.projects];
+  async getContactMessages(): Promise<ContactMessage[]> {
+    return Array.from(this.contactMessages.values()).sort(
+      (a, b) => b.createdAt.getTime() - a.createdAt.getTime()
+    );
   }
 
-  async getProjectById(id: number): Promise<SelectProject | null> {
-    return this.projects.find(p => p.id === id) || null;
+  async getNewsItems(limit?: number): Promise<NewsItem[]> {
+    const allNews = Array.from(this.newsItems.values())
+      .filter(item => item.isPublished)
+      .sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+    
+    return limit ? allNews.slice(0, limit) : allNews;
   }
 
-  async createProject(project: InsertProject): Promise<SelectProject> {
-    const newProject: SelectProject = {
-      id: Math.max(...this.projects.map(p => p.id)) + 1,
-      ...project,
-    };
-    this.projects.push(newProject);
-    return newProject;
-  }
-
-  // Team methods
-  async getTeam(): Promise<SelectTeam[]> {
-    return [...this.teamMembers];
-  }
-
-  async getTeamById(id: number): Promise<SelectTeam | null> {
-    return this.teamMembers.find(t => t.id === id) || null;
-  }
-
-  async createTeamMember(member: InsertTeam): Promise<SelectTeam> {
-    const newMember: SelectTeam = {
-      id: Math.max(...this.teamMembers.map(t => t.id)) + 1,
-      ...member,
-    };
-    this.teamMembers.push(newMember);
-    return newMember;
+  async getEvents(upcoming: boolean = true): Promise<Event[]> {
+    const now = new Date();
+    return Array.from(this.events.values())
+      .filter(event => upcoming ? event.eventDate >= now : true)
+      .sort((a, b) => a.eventDate.getTime() - b.eventDate.getTime());
   }
 }
 
