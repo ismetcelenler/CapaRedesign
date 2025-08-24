@@ -6,8 +6,11 @@ import NewsSection from "@/components/NewsSection";
 import TeamSection from "@/components/TeamSection";
 import EventsSection from "@/components/EventsSection";
 import ContactSection from "@/components/ContactSection";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -20,8 +23,8 @@ export default function Home() {
         <section className="py-20 bg-capa-navy text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Join Our Research</h2>
-              <p className="text-xl text-blue-100">Explore opportunities to advance your career in cutting-edge physics research</p>
+              <h2 className="text-4xl font-bold mb-4">{t.join.title}</h2>
+              <p className="text-xl text-blue-100">{t.join.subtitle}</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -29,15 +32,15 @@ export default function Home() {
                 <div className="text-capa-red mb-4">
                   <i className="fas fa-graduation-cap text-3xl"></i>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">PhD Positions</h3>
+                <h3 className="text-2xl font-semibold mb-4">{t.join.phd.title}</h3>
                 <p className="text-blue-100 leading-relaxed mb-6">
-                  Join our DarkQuantum project with fully-funded PhD positions in astroparticle physics and quantum technologies. Work with world-class researchers on groundbreaking experiments.
+                  {t.join.phd.description}
                 </p>
                 <button 
                   className="bg-capa-red hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                   data-testid="button-apply-phd"
                 >
-                  Apply Now
+                  {t.join.phd.button}
                 </button>
               </div>
 
@@ -45,15 +48,15 @@ export default function Home() {
                 <div className="text-capa-red mb-4">
                   <i className="fas fa-microscope text-3xl"></i>
                 </div>
-                <h3 className="text-2xl font-semibold mb-4">Postdoc Opportunities</h3>
+                <h3 className="text-2xl font-semibold mb-4">{t.join.postdoc.title}</h3>
                 <p className="text-blue-100 leading-relaxed mb-6">
-                  2-3 year postdoctoral contracts available for experienced researchers. Expand your career in our collaborative international research environment.
+                  {t.join.postdoc.description}
                 </p>
                 <button 
                   className="bg-capa-red hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                   data-testid="button-apply-postdoc"
                 >
-                  Learn More
+                  {t.join.postdoc.button}
                 </button>
               </div>
             </div>

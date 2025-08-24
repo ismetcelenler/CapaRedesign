@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/lib/LanguageContext";
 import { type NewsItem } from "@shared/schema";
 
 export default function NewsSection() {
+  const { t } = useLanguage();
   const { data: news, isLoading, error } = useQuery<NewsItem[]>({
     queryKey: ['/api/news'],
     queryFn: async () => {
@@ -21,9 +23,9 @@ export default function NewsSection() {
       <section id="news" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-capa-navy mb-4">Latest News</h2>
+            <h2 className="text-4xl font-bold text-capa-navy mb-4">{t.news.title}</h2>
             <p className="text-red-600" data-testid="text-news-error">
-              Failed to load news. Please try again later.
+              {t.news.errorLoading}
             </p>
           </div>
         </div>
@@ -37,8 +39,8 @@ export default function NewsSection() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
             <div>
-              <h2 className="text-4xl font-bold text-capa-navy mb-4">Latest News</h2>
-              <p className="text-xl text-capa-gray">Stay updated with our research developments and achievements</p>
+              <h2 className="text-4xl font-bold text-capa-navy mb-4">{t.news.title}</h2>
+              <p className="text-xl text-capa-gray">{t.news.subtitle}</p>
             </div>
           </div>
           <div className="grid lg:grid-cols-3 gap-8">
@@ -65,10 +67,10 @@ export default function NewsSection() {
         <div className="flex justify-between items-center mb-12">
           <div>
             <h2 className="text-4xl font-bold text-capa-navy mb-4" data-testid="text-news-title">
-              Latest News
+              {t.news.title}
             </h2>
             <p className="text-xl text-capa-gray" data-testid="text-news-subtitle">
-              Stay updated with our research developments and achievements
+              {t.news.subtitle}
             </p>
           </div>
           <Button 
@@ -76,7 +78,7 @@ export default function NewsSection() {
             className="hidden md:flex items-center text-capa-red hover:text-red-700 font-semibold"
             data-testid="button-view-all-news"
           >
-            View All News
+            {t.news.viewAll}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
@@ -84,7 +86,7 @@ export default function NewsSection() {
         {!news || news.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-capa-gray" data-testid="text-no-news">
-              No news articles available at this time.
+              {t.news.noNews}
             </p>
           </div>
         ) : (
@@ -122,7 +124,7 @@ export default function NewsSection() {
                     className="text-capa-red hover:text-red-700 font-semibold p-0 h-auto"
                     data-testid={`button-read-more-${index}`}
                   >
-                    Read More <ArrowRight className="ml-1 h-4 w-4" />
+                    {t.news.readMore} <ArrowRight className="ml-1 h-4 w-4" />
                   </Button>
                 </div>
               </article>
@@ -135,7 +137,7 @@ export default function NewsSection() {
             className="bg-capa-red text-white hover:bg-red-700"
             data-testid="button-view-all-mobile"
           >
-            View All News
+            {t.news.viewAll}
           </Button>
         </div>
       </div>

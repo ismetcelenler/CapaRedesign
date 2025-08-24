@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/LanguageContext";
 import capaLogoSrc from "@assets/image_1756071577695.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -38,55 +40,57 @@ export default function Header() {
                 className="text-capa-gray hover:text-capa-navy transition-colors font-medium"
                 data-testid="nav-home"
               >
-                Home
+                {t.nav.home}
               </button>
               <button 
                 onClick={() => scrollToSection('research')}
                 className="text-capa-gray hover:text-capa-navy transition-colors font-medium"
                 data-testid="nav-research"
               >
-                Research
+                {t.nav.research}
               </button>
               <button 
                 onClick={() => scrollToSection('team')}
                 className="text-capa-gray hover:text-capa-navy transition-colors font-medium"
                 data-testid="nav-team"
               >
-                Team
+                {t.nav.team}
               </button>
               <button 
                 onClick={() => scrollToSection('news')}
                 className="text-capa-gray hover:text-capa-navy transition-colors font-medium"
                 data-testid="nav-news"
               >
-                News
+                {t.nav.news}
               </button>
               <button 
                 onClick={() => scrollToSection('events')}
                 className="text-capa-gray hover:text-capa-navy transition-colors font-medium"
                 data-testid="nav-events"
               >
-                Events
+                {t.nav.events}
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
                 className="text-capa-gray hover:text-capa-navy transition-colors font-medium"
                 data-testid="nav-contact"
               >
-                Contact
+                {t.nav.contact}
               </button>
               
               {/* Language Switcher */}
               <div className="flex items-center space-x-2 ml-4 pl-4 border-l border-gray-200">
                 <button 
-                  className="text-capa-navy font-semibold"
+                  onClick={() => setLanguage('en')}
+                  className={`${language === 'en' ? 'text-capa-navy font-semibold' : 'text-gray-400 hover:text-capa-navy'} transition-colors`}
                   data-testid="button-lang-en"
                 >
                   EN
                 </button>
                 <span className="text-gray-300">|</span>
                 <button 
-                  className="text-gray-400 hover:text-capa-navy transition-colors"
+                  onClick={() => setLanguage('es')}
+                  className={`${language === 'es' ? 'text-capa-navy font-semibold' : 'text-gray-400 hover:text-capa-navy'} transition-colors`}
                   data-testid="button-lang-es"
                 >
                   ES
@@ -117,53 +121,55 @@ export default function Header() {
               className="block py-2 text-capa-gray hover:text-capa-navy transition-colors w-full text-left"
               data-testid="mobile-nav-home"
             >
-              Home
+              {t.nav.home}
             </button>
             <button 
               onClick={() => scrollToSection('research')}
               className="block py-2 text-capa-gray hover:text-capa-navy transition-colors w-full text-left"
               data-testid="mobile-nav-research"
             >
-              Research
+              {t.nav.research}
             </button>
             <button 
               onClick={() => scrollToSection('team')}
               className="block py-2 text-capa-gray hover:text-capa-navy transition-colors w-full text-left"
               data-testid="mobile-nav-team"
             >
-              Team
+              {t.nav.team}
             </button>
             <button 
               onClick={() => scrollToSection('news')}
               className="block py-2 text-capa-gray hover:text-capa-navy transition-colors w-full text-left"
               data-testid="mobile-nav-news"
             >
-              News
+              {t.nav.news}
             </button>
             <button 
               onClick={() => scrollToSection('events')}
               className="block py-2 text-capa-gray hover:text-capa-navy transition-colors w-full text-left"
               data-testid="mobile-nav-events"
             >
-              Events
+              {t.nav.events}
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
               className="block py-2 text-capa-gray hover:text-capa-navy transition-colors w-full text-left"
               data-testid="mobile-nav-contact"
             >
-              Contact
+              {t.nav.contact}
             </button>
             <div className="pt-3 border-t border-gray-100">
               <div className="flex space-x-4">
                 <button 
-                  className="text-capa-navy font-semibold"
+                  onClick={() => setLanguage('en')}
+                  className={`${language === 'en' ? 'text-capa-navy font-semibold' : 'text-gray-400'}`}
                   data-testid="mobile-lang-en"
                 >
                   English
                 </button>
                 <button 
-                  className="text-gray-400"
+                  onClick={() => setLanguage('es')}
+                  className={`${language === 'es' ? 'text-capa-navy font-semibold' : 'text-gray-400'}`}
                   data-testid="mobile-lang-es"
                 >
                   Español

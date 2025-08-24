@@ -1,5 +1,6 @@
 import { Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const teamMembers = [
   {
@@ -29,15 +30,17 @@ const teamMembers = [
 ];
 
 export default function TeamSection() {
+  const { t } = useLanguage();
+  
   return (
     <section id="team" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-capa-navy mb-4" data-testid="text-team-title">
-            Our Research Team
+            {t.team.title}
           </h2>
           <p className="text-xl text-capa-gray max-w-3xl mx-auto" data-testid="text-team-subtitle">
-            Meet the brilliant minds driving cutting-edge research in astroparticle physics and quantum technologies.
+            {t.team.subtitle}
           </p>
         </div>
 
@@ -73,7 +76,7 @@ export default function TeamSection() {
             data-testid="button-view-full-team"
           >
             <Users className="mr-2 h-5 w-5" />
-            View Full Team
+            {t.team.viewFullTeam}
           </Button>
         </div>
       </div>

@@ -1,6 +1,9 @@
 import { Twitter, Linkedin, Youtube, Rss } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -23,7 +26,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-blue-100 leading-relaxed mb-6 max-w-md">
-              Advancing the frontiers of physics through innovative research in astroparticles, dark matter, and quantum technologies.
+              {t.footer.description}
             </p>
             <div className="flex space-x-4">
               <a 
@@ -58,7 +61,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-lg mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2">
               <li>
                 <button 
@@ -66,7 +69,7 @@ export default function Footer() {
                   className="text-blue-100 hover:text-white transition-colors"
                   data-testid="footer-nav-research"
                 >
-                  Research Areas
+                  {t.footer.researchAreas}
                 </button>
               </li>
               <li>
@@ -75,7 +78,7 @@ export default function Footer() {
                   className="text-blue-100 hover:text-white transition-colors"
                   data-testid="footer-nav-team"
                 >
-                  Our Team
+                  {t.footer.ourTeam}
                 </button>
               </li>
               <li>
@@ -84,7 +87,7 @@ export default function Footer() {
                   className="text-blue-100 hover:text-white transition-colors"
                   data-testid="footer-nav-news"
                 >
-                  Latest News
+                  {t.footer.latestNews}
                 </button>
               </li>
               <li>
@@ -93,7 +96,7 @@ export default function Footer() {
                   className="text-blue-100 hover:text-white transition-colors"
                   data-testid="footer-nav-events"
                 >
-                  Events
+                  {t.nav.events}
                 </button>
               </li>
               <li>
@@ -102,38 +105,38 @@ export default function Footer() {
                   className="text-blue-100 hover:text-white transition-colors"
                   data-testid="footer-nav-contact"
                 >
-                  Contact
+                  {t.nav.contact}
                 </button>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-4">Resources</h4>
+            <h4 className="font-semibold text-lg mb-4">{t.footer.resources}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors" data-testid="link-publications">
-                  Publications
+                  {t.footer.publications}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors" data-testid="link-collaborations">
-                  Collaborations
+                  {t.footer.collaborations}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors" data-testid="link-careers">
-                  Career Opportunities
+                  {t.footer.careers}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors" data-testid="link-press">
-                  Press Room
+                  {t.footer.press}
                 </a>
               </li>
               <li>
                 <a href="#" className="text-blue-100 hover:text-white transition-colors" data-testid="link-privacy">
-                  Privacy Policy
+                  {t.footer.privacy}
                 </a>
               </li>
             </ul>
@@ -142,7 +145,7 @@ export default function Footer() {
 
         <div className="border-t border-blue-800 mt-8 pt-8 text-center">
           <p className="text-blue-100" data-testid="text-copyright">
-            © 2024 CAPA - Centro de Astropartículas y Física de Altas Energías. Universidad de Zaragoza. All rights reserved.
+            {t.footer.copyright}
           </p>
         </div>
       </div>

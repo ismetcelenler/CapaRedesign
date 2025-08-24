@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/LanguageContext";
 import { type Event } from "@shared/schema";
 
 export default function EventsSection() {
+  const { t } = useLanguage();
   const { data: events, isLoading, error } = useQuery<Event[]>({
     queryKey: ['/api/events'],
     queryFn: async () => {
@@ -20,9 +22,9 @@ export default function EventsSection() {
       <section id="events" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-capa-navy mb-4">Upcoming Events</h2>
+            <h2 className="text-4xl font-bold text-capa-navy mb-4">{t.events.title}</h2>
             <p className="text-red-600" data-testid="text-events-error">
-              Failed to load events. Please try again later.
+              {t.events.errorLoading}
             </p>
           </div>
         </div>
@@ -35,8 +37,8 @@ export default function EventsSection() {
       <section id="events" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-capa-navy mb-4">Upcoming Events</h2>
-            <p className="text-xl text-capa-gray">Join our seminars, conferences, and research presentations</p>
+            <h2 className="text-4xl font-bold text-capa-navy mb-4">{t.events.title}</h2>
+            <p className="text-xl text-capa-gray">{t.events.subtitle}</p>
           </div>
           <div className="space-y-6">
             {[1, 2, 3].map((i) => (
@@ -69,17 +71,17 @@ export default function EventsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-capa-navy mb-4" data-testid="text-events-title">
-            Upcoming Events
+            {t.events.title}
           </h2>
           <p className="text-xl text-capa-gray" data-testid="text-events-subtitle">
-            Join our seminars, conferences, and research presentations
+            {t.events.subtitle}
           </p>
         </div>
 
         {!events || events.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-capa-gray" data-testid="text-no-events">
-              No upcoming events scheduled at this time.
+              {t.events.noEvents}
             </p>
           </div>
         ) : (
@@ -109,7 +111,7 @@ export default function EventsSection() {
                           </h3>
                           {event.speaker && (
                             <p className="text-capa-gray" data-testid={`text-event-speaker-${index}`}>
-                              Speaker: {event.speaker}
+                              {t.events.speaker}: {event.speaker}
                             </p>
                           )}
                         </div>
@@ -119,7 +121,7 @@ export default function EventsSection() {
                       </p>
                       {event.location && (
                         <p className="text-sm text-capa-gray mt-2" data-testid={`text-event-location-${index}`}>
-                          Location: {event.location}
+                          {t.events.location}: {event.location}
                         </p>
                       )}
                     </div>
@@ -133,7 +135,7 @@ export default function EventsSection() {
                         }}
                         data-testid={`button-register-${index}`}
                       >
-                        Register
+                        {t.events.register}
                       </Button>
                     </div>
                   </div>
@@ -149,7 +151,7 @@ export default function EventsSection() {
             className="text-capa-red hover:text-red-700 font-semibold"
             data-testid="button-view-calendar"
           >
-            View Full Calendar <Calendar className="ml-2 h-4 w-4" />
+            {t.events.viewCalendar} <Calendar className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </div>

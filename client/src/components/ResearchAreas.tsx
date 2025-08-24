@@ -1,48 +1,52 @@
 import { Microscope, Satellite, Atom, Star, Network, FlaskConical } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
-const researchAreas = [
+const getResearchAreas = (t: any) => [
   {
     icon: Microscope,
-    title: "Dark Matter Research",
-    description: "Investigating the mysterious dark matter that comprises 85% of all matter in the universe through innovative detection methods and theoretical frameworks."
+    title: t.research.areas.darkMatter.title,
+    description: t.research.areas.darkMatter.description
   },
   {
     icon: Satellite,
-    title: "Cosmic Ray Physics", 
-    description: "Studying ultra-high-energy cosmic rays and their origins, using advanced detection arrays and computational modeling to understand these cosmic messengers."
+    title: t.research.areas.cosmicRay.title, 
+    description: t.research.areas.cosmicRay.description
   },
   {
     icon: Atom,
-    title: "Quantum Technologies",
-    description: "Developing cutting-edge quantum technologies for fundamental physics research, including quantum sensors and detection systems."
+    title: t.research.areas.quantum.title,
+    description: t.research.areas.quantum.description
   },
   {
     icon: Star,
-    title: "Astroparticle Physics",
-    description: "Exploring the intersection of particle physics and astrophysics to understand fundamental processes in extreme cosmic environments."
+    title: t.research.areas.astroparticle.title,
+    description: t.research.areas.astroparticle.description
   },
   {
     icon: Network,
-    title: "Theoretical Physics",
-    description: "Advancing theoretical frameworks in particle physics, cosmology, and quantum field theory to interpret experimental observations."
+    title: t.research.areas.theoretical.title,
+    description: t.research.areas.theoretical.description
   },
   {
     icon: FlaskConical,
-    title: "Experimental Techniques",
-    description: "Developing innovative experimental methods and detector technologies for next-generation physics experiments."
+    title: t.research.areas.experimental.title,
+    description: t.research.areas.experimental.description
   }
 ];
 
 export default function ResearchAreas() {
+  const { t } = useLanguage();
+  const researchAreas = getResearchAreas(t);
+  
   return (
     <section id="research" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-capa-navy mb-4" data-testid="text-research-title">
-            Research Areas
+            {t.research.title}
           </h2>
           <p className="text-xl text-capa-gray max-w-3xl mx-auto" data-testid="text-research-description">
-            Our interdisciplinary research spans multiple frontiers of modern physics, from the smallest particles to the largest structures in the universe.
+            {t.research.subtitle}
           </p>
         </div>
 

@@ -1,7 +1,10 @@
 import { Atom } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -32,17 +35,17 @@ export default function HeroSection() {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-title">
-                Exploring the 
-                <span className="text-capa-red"> Universe's</span> 
-                Greatest Mysteries
+                {t.hero.title} 
+                <span className="text-capa-red"> {t.hero.titleHighlight}</span> 
+                {t.hero.titleEnd}
               </h1>
               <p className="text-xl lg:text-2xl text-blue-100 font-light" data-testid="text-hero-subtitle">
-                Center for Astroparticles and High Energy Physics
+                {t.hero.subtitle}
               </p>
             </div>
             
             <p className="text-lg text-blue-100 leading-relaxed max-w-2xl" data-testid="text-hero-description">
-              CAPA is a leading research institute at the University of Zaragoza, dedicated to advancing our understanding of fundamental physics through cutting-edge research in astroparticles, dark matter, and high-energy phenomena.
+              {t.hero.description}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -52,7 +55,7 @@ export default function HeroSection() {
                 data-testid="button-explore-research"
               >
                 <Atom className="mr-2 h-5 w-5" />
-                Explore Research
+                {t.hero.exploreResearch}
               </Button>
               <Button 
                 variant="outline"
@@ -60,7 +63,7 @@ export default function HeroSection() {
                 className="border-2 border-white text-white hover:bg-white hover:text-capa-navy px-8 py-4 text-base font-semibold transition-all duration-300"
                 data-testid="button-join-team"
               >
-                Join Our Team
+                {t.hero.joinTeam}
               </Button>
             </div>
           </div>

@@ -10,12 +10,14 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/lib/LanguageContext";
 import { insertContactMessageSchema, type InsertContactMessage } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 
 const contactFormSchema = insertContactMessageSchema;
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,16 +46,16 @@ export default function ContactSection() {
     },
     onSuccess: () => {
       toast({
-        title: "Message sent successfully",
-        description: "Thank you for contacting us. We'll get back to you soon.",
+        title: t.contact.success.title,
+        description: t.contact.success.description,
       });
       reset();
       queryClient.invalidateQueries({ queryKey: ["/api/admin/contact-messages"] });
     },
     onError: (error) => {
       toast({
-        title: "Failed to send message",
-        description: "Please try again later.",
+        title: t.contact.error.title,
+        description: t.contact.error.description,
         variant: "destructive",
       });
     },
@@ -75,10 +77,10 @@ export default function ContactSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-capa-navy mb-4" data-testid="text-contact-title">
-            Contact Us
+            {t.contact.title}
           </h2>
           <p className="text-xl text-capa-gray" data-testid="text-contact-subtitle">
-            Get in touch with our research team
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -87,13 +89,13 @@ export default function ContactSection() {
           <Card className="shadow-lg">
             <CardContent className="p-8">
               <h3 className="text-2xl font-semibold text-capa-navy mb-6" data-testid="text-form-title">
-                Send us a Message
+                {t.contact.formTitle}
               </h3>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <Label htmlFor="firstName" className="text-sm font-medium text-capa-gray mb-2">
-                      First Name
+                      {t.contact.firstName}
                     </Label>
                     <Input
                       {...register("firstName")}
@@ -109,7 +111,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <Label htmlFor="lastName" className="text-sm font-medium text-capa-gray mb-2">
-                      Last Name
+                      {t.contact.lastName}
                     </Label>
                     <Input
                       {...register("lastName")}
@@ -127,7 +129,7 @@ export default function ContactSection() {
                 
                 <div>
                   <Label htmlFor="email" className="text-sm font-medium text-capa-gray mb-2">
-                    Email
+                    {t.contact.email}
                   </Label>
                   <Input
                     {...register("email")}
@@ -145,17 +147,17 @@ export default function ContactSection() {
                 
                 <div>
                   <Label htmlFor="subject" className="text-sm font-medium text-capa-gray mb-2">
-                    Subject
+                    {t.contact.subject}
                   </Label>
                   <Select onValueChange={(value) => setValue("subject", value)} value={subject}>
                     <SelectTrigger className="mt-1" data-testid="select-subject">
-                      <SelectValue placeholder="Select a topic" />
+                      <SelectValue placeholder={t.contact.placeholders.selectTopic} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="research">Research Collaboration</SelectItem>
-                      <SelectItem value="positions">Career Opportunities</SelectItem>
-                      <SelectItem value="events">Events & Seminars</SelectItem>
-                      <SelectItem value="general">General Inquiry</SelectItem>
+                      <SelectItem value="research">{t.contact.subjects.research}</SelectItem>
+                      <SelectItem value="positions">{t.contact.subjects.positions}</SelectItem>
+                      <SelectItem value="events">{t.contact.subjects.events}</SelectItem>
+                      <SelectItem value="general">{t.contact.subjects.general}</SelectItem>
                     </SelectContent>
                   </Select>
                   {errors.subject && (
@@ -167,7 +169,7 @@ export default function ContactSection() {
                 
                 <div>
                   <Label htmlFor="message" className="text-sm font-medium text-capa-gray mb-2">
-                    Message
+                    {t.contact.message}
                   </Label>
                   <Textarea
                     {...register("message")}
@@ -190,7 +192,7 @@ export default function ContactSection() {
                   data-testid="button-submit-form"
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  {isSubmitting || contactMutation.isPending ? "Sending..." : "Send Message"}
+                  {isSubmitting || contactMutation.isPending ? t.contact.sending : t.contact.sendMessage}
                 </Button>
               </form>
             </CardContent>
@@ -201,7 +203,7 @@ export default function ContactSection() {
             <Card className="shadow-lg">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold text-capa-navy mb-6" data-testid="text-contact-info-title">
-                  Contact Information
+                  {t.contact.contactInfo}
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-4">
@@ -209,7 +211,7 @@ export default function ContactSection() {
                       <MapPin className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-capa-navy" data-testid="text-address-label">Address</h4>
+                      <h4 className="font-semibold text-capa-navy" data-testid="text-address-label">{t.contact.address}</h4>
                       <p className="text-capa-gray" data-testid="text-address">
                         Universidad de Zaragoza<br />
                         Centro de Astropartículas y Física de Altas Energías<br />
@@ -223,7 +225,7 @@ export default function ContactSection() {
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-capa-navy" data-testid="text-email-label">Email</h4>
+                      <h4 className="font-semibold text-capa-navy" data-testid="text-email-label">{t.contact.email}</h4>
                       <p className="text-capa-gray" data-testid="text-email">capa@unizar.es</p>
                     </div>
                   </div>
@@ -232,7 +234,7 @@ export default function ContactSection() {
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-capa-navy" data-testid="text-phone-label">Phone</h4>
+                      <h4 className="font-semibold text-capa-navy" data-testid="text-phone-label">{t.contact.phone}</h4>
                       <p className="text-capa-gray" data-testid="text-phone">+34 976 76 1000</p>
                     </div>
                   </div>
@@ -244,7 +246,7 @@ export default function ContactSection() {
             <Card className="shadow-lg">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold text-capa-navy mb-6" data-testid="text-location-title">
-                  Location
+                  {t.contact.location}
                 </h3>
                 <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
                   <img 
@@ -255,7 +257,7 @@ export default function ContactSection() {
                   />
                 </div>
                 <p className="text-sm text-capa-gray mt-4" data-testid="text-location-description">
-                  Located in the heart of Zaragoza, our facilities provide state-of-the-art research infrastructure.
+                  {t.contact.locationDescription}
                 </p>
               </CardContent>
             </Card>
