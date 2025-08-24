@@ -1,0 +1,68 @@
+I am working on a complete visual and functional redesign of the following website: https://capa.unizar.es/?lang=en
+, which belongs to the CAPA (Centro de Arte y Producción Audiovisual) center of the University of Zaragoza. The goal is to modernize the interface while keeping the identity, content structure, and branding elements such as logos, color palette, and mission intact.
+
+Please help me generate a detailed concept for a new version of this website with the following improvements:
+
+Modern Aesthetic:
+
+Clean, responsive layout using modern UI/UX principles.
+
+Visual hierarchy and intuitive navigation.
+
+Use of whitespace, smooth animations/transitions, and a modern font family.
+
+Color scheme aligned with CAPA’s visual identity (based on the logo and current design).
+
+Homepage Redesign:
+
+A hero section with a large banner image or video background representing audiovisual creativity.
+
+Clear value proposition text and a short explanation about CAPA’s mission.
+
+Call-to-action buttons for exploring projects, joining CAPA, and contacting them.
+
+Dynamic Content Sections:
+
+Project gallery or portfolio section with filterable categories and clickable thumbnails that open detailed views.
+
+"Latest News" or "Blog" section that can be updated regularly with articles, news, or announcements.
+
+Upcoming events or workshop calendar section.
+
+Pages to Include:
+
+About CAPA: Mission, team members, and facilities.
+
+Projects: Past and current audiovisual projects with images, videos, and descriptions.
+
+Collaborations: Partners and institutions CAPA works with.
+
+Blog/News: Articles, updates, interviews.
+
+Contact: With contact form, address, and embedded Google Maps location.
+
+Accessibility & Performance:
+
+Multilingual support (EN/ES).
+
+Fast-loading images and videos (use lazy loading).
+
+Mobile responsiveness across all devices.
+
+Accessibility features (screen reader compatibility, contrast settings).
+
+Design Tools:
+
+Suggest wireframes or layouts using Figma or Adobe XD style.
+
+Incorporate icons and illustrations that match an artistic audiovisual center.
+
+Optional Add-ons:
+
+Integration with social media feeds.
+
+Newsletter subscription popup.
+
+Backend suggestion (CMS like WordPress, Headless CMS, or static site generator).
+
+Please generate a project overview or mockup idea for this redesigned site, and explain how each section enhances usability, accessibility, and engagement for both students and external visitors.
