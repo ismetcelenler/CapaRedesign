@@ -1,0 +1,874 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPA - Centro de Arte y Producción Audiovisual | Universidad de Zaragoza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'unizar-blue': '#1e3a8a',
+                        'unizar-light': '#3b82f6',
+                        'creative-purple': '#8b5cf6',
+                        'creative-light': '#a855f7',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .hero-video {
+            filter: brightness(0.7);
+        }
+        .nav-link:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            transition: all 0.3s ease;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="font-inter text-gray-900 bg-gray-50">
+
+    <!-- @COMPONENT: Header [Navigation with language toggle and mobile menu] -->
+    <header class="fixed top-0 w-full z-50 glass-effect border-b border-white/20">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- @COMPONENT: Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-unizar-blue rounded-lg flex items-center justify-center">
+                        <i class="fas fa-video text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-white">CAPA</h1>
+                        <p class="text-xs text-gray-200">Universidad de Zaragoza</p>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: Logo -->
+
+                <!-- @COMPONENT: Navigation Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link text-white hover:text-creative-light font-medium">Inicio</a>
+                    <a href="#proyectos" class="nav-link text-white hover:text-creative-light font-medium">Proyectos</a>
+                    <a href="#sobre-nosotros" class="nav-link text-white hover:text-creative-light font-medium">Sobre Nosotros</a>
+                    <a href="#colaboraciones" class="nav-link text-white hover:text-creative-light font-medium">Colaboraciones</a>
+                    <a href="#noticias" class="nav-link text-white hover:text-creative-light font-medium">Noticias</a>
+                    <a href="#contacto" class="nav-link text-white hover:text-creative-light font-medium">Contacto</a>
+                </div>
+                <!-- @END_COMPONENT: Navigation Menu -->
+
+                <!-- @COMPONENT: Language Toggle -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex bg-white/20 rounded-lg p-1">
+                        <button class="px-3 py-1 text-sm font-medium text-white bg-unizar-blue rounded-md">ES</button>
+                        <button class="px-3 py-1 text-sm font-medium text-white/70 hover:text-white">EN</button>
+                    </div>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+                <!-- @END_COMPONENT: Language Toggle -->
+            </div>
+        </nav>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- @COMPONENT: Hero Section [Video background with main CTA] -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Video background placeholder -->
+        <!-- A dynamic montage of students creating audiovisual content in modern studios -->
+        <div class="absolute inset-0 hero-video bg-gradient-to-r from-unizar-blue to-creative-purple"></div>
+        
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6 animate-fade-in">
+                <span class="block">Centro de Arte y</span>
+                <span class="block text-creative-light">Producción Audiovisual</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto animate-slide-up">
+                Impulsamos la creatividad audiovisual en la Universidad de Zaragoza a través de la innovación tecnológica, 
+                la colaboración interdisciplinaria y la excelencia artística.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
+                <button class="px-8 py-4 bg-creative-purple hover:bg-creative-light text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105">
+                    <i class="fas fa-play-circle mr-2"></i>
+                    Explorar Proyectos
+                </button>
+                <button class="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-unizar-blue font-semibold rounded-lg transition-all duration-300">
+                    <i class="fas fa-users mr-2"></i>
+                    Únete a CAPA
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Featured Projects Gallery [Filterable project showcase] -->
+    <section id="proyectos" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">Proyectos Destacados</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Descubre las creaciones audiovisuales más innovadoras desarrolladas por nuestra comunidad
+                </p>
+            </div>
+
+            <!-- @COMPONENT: Project Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="px-6 py-3 bg-unizar-blue text-white rounded-full font-medium transition-all duration-300 hover:bg-unizar-light">
+                    Todos
+                </button>
+                <button class="px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-medium transition-all duration-300 hover:bg-gray-200">
+                    Documentales
+                </button>
+                <button class="px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-medium transition-all duration-300 hover:bg-gray-200">
+                    Ficción
+                </button>
+                <button class="px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-medium transition-all duration-300 hover:bg-gray-200">
+                    Animación
+                </button>
+                <button class="px-6 py-3 bg-gray-100 text-gray-700 rounded-full font-medium transition-all duration-300 hover:bg-gray-200">
+                    Experimental
+                </button>
+            </div>
+            <!-- @END_COMPONENT: Project Filters -->
+
+            <!-- @COMPONENT: Project Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: projects.map(project => ( -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- A cinematic shot of film students operating professional cameras in a modern studio -->
+                    <img src="https://pixabay.com/get/g908240461f2053a671bfa7461dd454d0bdc1c68bb5a0af76985d0c0072cb1b9318234b5b37e6bd5f404e44e9d781ebdf62114cf6b6f1ef2b2c19f44f5ea44cb5_1280.jpg" 
+                         alt="Proyecto audiovisual de estudiantes" 
+                         class="w-full h-64 object-cover" data-mock="true" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-creative-purple/10 text-creative-purple text-sm font-medium rounded-full" data-mock="true">
+                                Documental
+                            </span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span data-bind="project.duration" data-mock="true">15 min</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2" data-bind="project.title" data-mock="true">
+                            Memoria Digital: Zaragoza
+                        </h3>
+                        <p class="text-gray-600 mb-4" data-bind="project.description" data-mock="true">
+                            Un viaje visual por la historia contemporánea de Zaragoza a través de testimonios y archivo histórico.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full mr-2" data-mock="true"></div>
+                                <span class="text-sm text-gray-600" data-bind="project.author" data-mock="true">María González</span>
+                            </div>
+                            <button class="px-4 py-2 bg-unizar-blue text-white rounded-lg hover:bg-unizar-light transition-colors duration-300">
+                                <i class="fas fa-play mr-2"></i>Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- A creative animation workspace with digital art tools and colorful character designs -->
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500" 
+                         alt="Estudio de animación digital" 
+                         class="w-full h-64 object-cover" data-mock="true" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-creative-light/10 text-creative-light text-sm font-medium rounded-full" data-mock="true">
+                                Animación
+                            </span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span data-bind="project.duration" data-mock="true">8 min</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2" data-bind="project.title" data-mock="true">
+                            Ecos del Ebro
+                        </h3>
+                        <p class="text-gray-600 mb-4" data-bind="project.description" data-mock="true">
+                            Una animación 2D que explora las leyendas urbanas de Zaragoza con un estilo visual único.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full mr-2" data-mock="true"></div>
+                                <span class="text-sm text-gray-600" data-bind="project.author" data-mock="true">Carlos Ruiz</span>
+                            </div>
+                            <button class="px-4 py-2 bg-unizar-blue text-white rounded-lg hover:bg-unizar-light transition-colors duration-300">
+                                <i class="fas fa-play mr-2"></i>Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- A dramatic scene from an independent short film with cinematic lighting -->
+                    <img src="https://pixabay.com/get/g31272ac7fb7a9c48b4bc62fb1056040ac3700ae40d5a6fcbb5ed3017c6abc44d47cc0610d15c30d1c6e6b1c6655489d8_1280.jpg" 
+                         alt="Escena de cortometraje dramático" 
+                         class="w-full h-64 object-cover" data-mock="true" />
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-unizar-blue/10 text-unizar-blue text-sm font-medium rounded-full" data-mock="true">
+                                Ficción
+                            </span>
+                            <div class="flex items-center text-gray-500 text-sm">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span data-bind="project.duration" data-mock="true">22 min</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2" data-bind="project.title" data-mock="true">
+                            Entre Mundos
+                        </h3>
+                        <p class="text-gray-600 mb-4" data-bind="project.description" data-mock="true">
+                            Un thriller psicológico que explora la realidad y la percepción en el contexto universitario.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full mr-2" data-mock="true"></div>
+                                <span class="text-sm text-gray-600" data-bind="project.author" data-mock="true">Ana López</span>
+                            </div>
+                            <button class="px-4 py-2 bg-unizar-blue text-white rounded-lg hover:bg-unizar-light transition-colors duration-300">
+                                <i class="fas fa-play mr-2"></i>Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+            <!-- @END_COMPONENT: Project Grid -->
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 border-2 border-unizar-blue text-unizar-blue hover:bg-unizar-blue hover:text-white font-semibold rounded-lg transition-all duration-300">
+                    Ver Todos los Proyectos
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Featured Projects Gallery -->
+
+    <!-- @COMPONENT: About CAPA Section [Mission, team, facilities] -->
+    <section id="sobre-nosotros" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-5xl font-bold text-gray-900 mb-6">Sobre CAPA</h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        El Centro de Arte y Producción Audiovisual de la Universidad de Zaragoza es un espacio innovador 
+                        donde convergen la creatividad, la tecnología y la excelencia académica para impulsar el futuro 
+                        del arte audiovisual.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-creative-purple rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-lightbulb text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Innovación Creativa</h3>
+                                <p class="text-gray-600">
+                                    Fomentamos la experimentación con nuevas tecnologías y narrativas audiovisuales.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-unizar-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Colaboración Interdisciplinaria</h3>
+                                <p class="text-gray-600">
+                                    Conectamos estudiantes de diferentes facultades para crear proyectos únicos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-creative-light rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-award text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Excelencia Profesional</h3>
+                                <p class="text-gray-600">
+                                    Preparamos a nuestros estudiantes para liderar la industria audiovisual del futuro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Modern video production studio with professional equipment and students working -->
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                         alt="Estudio de producción profesional" 
+                         class="rounded-xl shadow-lg w-full" />
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-unizar-blue" data-bind="stats.students" data-mock="true">200+</div>
+                            <div class="text-gray-600">Estudiantes</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-creative-purple" data-bind="stats.projects" data-mock="true">150+</div>
+                            <div class="text-gray-600">Proyectos</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-creative-light" data-bind="stats.awards" data-mock="true">25+</div>
+                            <div class="text-gray-600">Premios</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About CAPA Section -->
+
+    <!-- @COMPONENT: Latest News Section [Recent articles and updates] -->
+    <section id="noticias" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">Últimas Noticias</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Mantente al día con las últimas novedades, eventos y logros de nuestra comunidad
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: news.map(article => ( -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Students celebrating at an audiovisual festival with awards and trophies -->
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Celebración en festival audiovisual" 
+                         class="w-full h-48 object-cover" data-mock="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fas fa-calendar mr-2"></i>
+                            <span data-bind="article.date" data-mock="true">15 de Marzo, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-bind="article.title" data-mock="true">
+                            CAPA gana el Festival de Cine Universitario
+                        </h3>
+                        <p class="text-gray-600 mb-4" data-bind="article.excerpt" data-mock="true">
+                            Nuestro cortometraje "Ecos del Ebro" ha sido galardonado con el primer premio en la categoría de animación...
+                        </p>
+                        <a href="#" class="text-unizar-blue hover:text-unizar-light font-medium inline-flex items-center">
+                            Leer más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- Modern workshop setting with VR equipment and students learning new technology -->
+                    <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Taller de realidad virtual" 
+                         class="w-full h-48 object-cover" data-mock="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fas fa-calendar mr-2"></i>
+                            <span data-bind="article.date" data-mock="true">12 de Marzo, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-bind="article.title" data-mock="true">
+                            Nuevo Taller de Realidad Virtual
+                        </h3>
+                        <p class="text-gray-600 mb-4" data-bind="article.excerpt" data-mock="true">
+                            Este mes lanzamos un innovador taller de producción audiovisual en realidad virtual, abriendo nuevas posibilidades...
+                        </p>
+                        <a href="#" class="text-unizar-blue hover:text-unizar-light font-medium inline-flex items-center">
+                            Leer más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <!-- International collaboration scene with students from different countries working together -->
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                         alt="Colaboración internacional de estudiantes" 
+                         class="w-full h-48 object-cover" data-mock="true" />
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-500 mb-3">
+                            <i class="fas fa-calendar mr-2"></i>
+                            <span data-bind="article.date" data-mock="true">8 de Marzo, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3" data-bind="article.title" data-mock="true">
+                            Colaboración Internacional Exitosa
+                        </h3>
+                        <p class="text-gray-600 mb-4" data-bind="article.excerpt" data-mock="true">
+                            Estudiantes de CAPA colaboran con universidades europeas en un proyecto documental sobre patrimonio cultural...
+                        </p>
+                        <a href="#" class="text-unizar-blue hover:text-unizar-light font-medium inline-flex items-center">
+                            Leer más <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 border-2 border-unizar-blue text-unizar-blue hover:bg-unizar-blue hover:text-white font-semibold rounded-lg transition-all duration-300">
+                    Ver Todas las Noticias
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Latest News Section -->
+
+    <!-- @COMPONENT: Events Calendar Section [Upcoming workshops and events] -->
+    <section class="py-20 bg-gradient-to-br from-unizar-blue to-creative-purple">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-white mb-4">Próximos Eventos</h2>
+                <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+                    Participa en nuestros talleres, conferencias y eventos especiales
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- @MAP: events.map(event => ( -->
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold" data-bind="event.day" data-mock="true">25</div>
+                        <div class="text-lg" data-bind="event.month" data-mock="true">MAR</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-bind="event.title" data-mock="true">
+                        Taller de Edición Avanzada
+                    </h3>
+                    <p class="text-gray-200 text-sm mb-3" data-bind="event.description" data-mock="true">
+                        Aprende técnicas profesionales de postproducción
+                    </p>
+                    <div class="flex items-center text-sm text-gray-300">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span data-bind="event.time" data-mock="true">16:00 - 18:00</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold" data-bind="event.day" data-mock="true">28</div>
+                        <div class="text-lg" data-bind="event.month" data-mock="true">MAR</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-bind="event.title" data-mock="true">
+                        Conferencia Magistral
+                    </h3>
+                    <p class="text-gray-200 text-sm mb-3" data-bind="event.description" data-mock="true">
+                        "El futuro del cine digital" por Pedro Almodóvar
+                    </p>
+                    <div class="flex items-center text-sm text-gray-300">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span data-bind="event.time" data-mock="true">19:00 - 21:00</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold" data-bind="event.day" data-mock="true">02</div>
+                        <div class="text-lg" data-bind="event.month" data-mock="true">ABR</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-bind="event.title" data-mock="true">
+                        Festival de Cortometrajes
+                    </h3>
+                    <p class="text-gray-200 text-sm mb-3" data-bind="event.description" data-mock="true">
+                        Proyección y premiación de trabajos estudiantiles
+                    </p>
+                    <div class="flex items-center text-sm text-gray-300">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span data-bind="event.time" data-mock="true">18:00 - 22:00</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-lg rounded-xl p-6 text-white">
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold" data-bind="event.day" data-mock="true">05</div>
+                        <div class="text-lg" data-bind="event.month" data-mock="true">ABR</div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2" data-bind="event.title" data-mock="true">
+                        Masterclass VFX
+                    </h3>
+                    <p class="text-gray-200 text-sm mb-3" data-bind="event.description" data-mock="true">
+                        Efectos visuales con profesionales de la industria
+                    </p>
+                    <div class="flex items-center text-sm text-gray-300">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span data-bind="event.time" data-mock="true">10:00 - 14:00</span>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 bg-white text-unizar-blue hover:bg-gray-100 font-semibold rounded-lg transition-all duration-300">
+                    Ver Calendario Completo
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Events Calendar Section -->
+
+    <!-- @COMPONENT: Collaborations Section [Partners and institutions] -->
+    <section id="colaboraciones" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">Nuestras Colaboraciones</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Trabajamos con instituciones y empresas líderes para ofrecer las mejores oportunidades
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
+                <!-- Partner logos placeholders -->
+                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center" data-mock="true">
+                    <span class="text-gray-500 font-semibold">RTVE</span>
+                </div>
+                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center" data-mock="true">
+                    <span class="text-gray-500 font-semibold">Netflix</span>
+                </div>
+                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center" data-mock="true">
+                    <span class="text-gray-500 font-semibold">Adobe</span>
+                </div>
+                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center" data-mock="true">
+                    <span class="text-gray-500 font-semibold">Blackmagic</span>
+                </div>
+                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center" data-mock="true">
+                    <span class="text-gray-500 font-semibold">Canon</span>
+                </div>
+                <div class="bg-gray-200 h-20 rounded-lg flex items-center justify-center" data-mock="true">
+                    <span class="text-gray-500 font-semibold">RED</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Collaborations Section -->
+
+    <!-- @COMPONENT: Contact Section [Contact form and location] -->
+    <section id="contacto" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-4">Contáctanos</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    ¿Tienes una idea? ¿Quieres colaborar? Estamos aquí para escucharte
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- @COMPONENT: Contact Form -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Envíanos un mensaje</h3>
+                    <form class="space-y-6">
+                        <!-- @STATE: formData = {name: '', email: '', subject: '', message: ''} -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
+                                <input type="text" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-unizar-blue focus:border-unizar-blue transition-colors"
+                                       placeholder="Tu nombre" 
+                                       data-bind="formData.name" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-unizar-blue focus:border-unizar-blue transition-colors"
+                                       placeholder="tu@email.com" 
+                                       data-bind="formData.email" />
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Asunto</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-unizar-blue focus:border-unizar-blue transition-colors"
+                                    data-bind="formData.subject">
+                                <option>Colaboración en proyecto</option>
+                                <option>Información sobre talleres</option>
+                                <option>Solicitud de instalaciones</option>
+                                <option>Consulta general</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
+                            <textarea rows="5" 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-unizar-blue focus:border-unizar-blue transition-colors"
+                                      placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                                      data-bind="formData.message"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full px-8 py-4 bg-unizar-blue text-white font-semibold rounded-lg hover:bg-unizar-light transition-colors duration-300"
+                                data-event="click:handleSubmit"
+                                data-implementation="Should validate form and send email">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+                <!-- @END_COMPONENT: Contact Form -->
+
+                <!-- @COMPONENT: Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Información de Contacto</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-unizar-blue rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-900">Dirección</h4>
+                                    <p class="text-gray-600">
+                                        Edificio Facultad de Filosofía y Letras<br/>
+                                        Campus San Francisco<br/>
+                                        50009 Zaragoza, España
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-creative-purple rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-900">Teléfono</h4>
+                                    <p class="text-gray-600">+34 976 761 000</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-creative-light rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-900">Email</h4>
+                                    <p class="text-gray-600">info@capa.unizar.es</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-unizar-light rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-900">Horario</h4>
+                                    <p class="text-gray-600">
+                                        Lunes a Viernes: 9:00 - 18:00<br/>
+                                        Sábados: 10:00 - 14:00
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Maps Placeholder -->
+                    <div class="bg-gray-300 h-64 rounded-xl flex items-center justify-center">
+                        <div class="text-center text-gray-600">
+                            <i class="fas fa-map text-4xl mb-2"></i>
+                            <p>Google Maps Integration</p>
+                            <p class="text-sm">Universidad de Zaragoza - Campus San Francisco</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_COMPONENT: Contact Information -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact Section -->
+
+    <!-- @COMPONENT: Newsletter Section [Subscription form] -->
+    <section class="py-16 bg-gradient-to-r from-unizar-blue to-creative-purple">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="text-3xl font-bold text-white mb-4">Mantente Conectado</h3>
+            <p class="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                Suscríbete a nuestro newsletter y recibe las últimas noticias, eventos y oportunidades de CAPA
+            </p>
+            
+            <div class="max-w-md mx-auto flex gap-4">
+                <input type="email" 
+                       placeholder="tu@email.com"
+                       class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white" />
+                <button class="px-8 py-3 bg-white text-unizar-blue font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                    Suscribirse
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Newsletter Section -->
+
+    <!-- @COMPONENT: Footer [Social links and legal information] -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-unizar-blue rounded-lg flex items-center justify-center">
+                            <i class="fas fa-video text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">CAPA</h3>
+                            <p class="text-sm text-gray-400">Universidad de Zaragoza</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        Impulsando la creatividad audiovisual y formando a los profesionales del futuro.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-unizar-blue transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-unizar-blue transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-unizar-blue transition-colors">
+                            <i class="fab fa-vimeo-v"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-unizar-blue transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Enlaces Rápidos</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="#proyectos" class="hover:text-white transition-colors">Proyectos</a></li>
+                        <li><a href="#sobre-nosotros" class="hover:text-white transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#colaboraciones" class="hover:text-white transition-colors">Colaboraciones</a></li>
+                        <li><a href="#noticias" class="hover:text-white transition-colors">Noticias</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Recursos</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Solicitar Equipos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Guías de Producción</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Calendario Académico</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Normas de Uso</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Universidad de Zaragoza</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="https://www.unizar.es" class="hover:text-white transition-colors">Portal Principal</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Campus Virtual</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Biblioteca</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Facultades</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Investigación</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                        © 2024 CAPA - Centro de Arte y Producción Audiovisual. Universidad de Zaragoza. Todos los derechos reservados.
+                    </p>
+                    <div class="flex space-x-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
+                        <a href="#" class="hover:text-white transition-colors">Términos de Uso</a>
+                        <a href="#" class="hover:text-white transition-colors">Accesibilidad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement React components, state management, and API integration
+        
+        (function() {
+            // Simple smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Project filter functionality placeholder
+            const filterButtons = document.querySelectorAll('#proyectos button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // TODO: Implement project filtering logic
+                    filterButtons.forEach(btn => btn.classList.remove('bg-unizar-blue', 'text-white'));
+                    filterButtons.forEach(btn => btn.classList.add('bg-gray-100', 'text-gray-700'));
+                    
+                    this.classList.remove('bg-gray-100', 'text-gray-700');
+                    this.classList.add('bg-unizar-blue', 'text-white');
+                });
+            });
+
+            // Form submission placeholder
+            const contactForm = document.querySelector('#contacto form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement form validation and submission
+                    alert('Gracias por tu mensaje. Te contactaremos pronto.');
+                });
+            }
+
+            // Newsletter subscription placeholder
+            const newsletterForm = document.querySelector('section:nth-last-child(2)');
+            if (newsletterForm) {
+                const button = newsletterForm.querySelector('button');
+                button.addEventListener('click', function() {
+                    // TODO: Implement newsletter subscription
+                    const email = newsletterForm.querySelector('input[type="email"]').value;
+                    if (email) {
+                        alert('¡Gracias por suscribirte a nuestro newsletter!');
+                    }
+                });
+            }
+
+            // Header transparency on scroll
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(30, 58, 138, 0.95)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.1)';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

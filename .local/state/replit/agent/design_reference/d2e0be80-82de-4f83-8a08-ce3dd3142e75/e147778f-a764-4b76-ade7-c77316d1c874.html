@@ -1,0 +1,725 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPA - Centro de Astropartículas y Física de Altas Energías</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'capa-navy': '#1e3a8a',
+                        'capa-red': '#dc2626',
+                        'capa-light-blue': '#dbeafe',
+                        'capa-gray': '#374151'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-inter bg-white text-capa-gray">
+    
+    <!-- Header -->
+    <!-- @COMPONENT: Header [navigation, logo, language switcher] -->
+    <header class="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <!-- CAPA Logo with correct branding -->
+                        <div class="text-capa-navy font-bold text-3xl tracking-tight">
+                            C<span class="text-capa-red">A</span>PA
+                        </div>
+                        <div class="ml-4 text-sm text-capa-gray leading-tight hidden sm:block">
+                            <div class="font-medium">Centro de Astropartículas y</div>
+                            <div class="font-medium">Física de Altas Energías</div>
+                            <div class="text-capa-navy font-semibold">Universidad Zaragoza</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-capa-gray hover:text-capa-navy transition-colors font-medium">Home</a>
+                    <a href="#research" class="text-capa-gray hover:text-capa-navy transition-colors font-medium">Research</a>
+                    <a href="#team" class="text-capa-gray hover:text-capa-navy transition-colors font-medium">Team</a>
+                    <a href="#news" class="text-capa-gray hover:text-capa-navy transition-colors font-medium">News</a>
+                    <a href="#events" class="text-capa-gray hover:text-capa-navy transition-colors font-medium">Events</a>
+                    <a href="#contact" class="text-capa-gray hover:text-capa-navy transition-colors font-medium">Contact</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="flex items-center space-x-2 ml-4 pl-4 border-l border-gray-200">
+                        <button class="text-capa-navy font-semibold">EN</button>
+                        <span class="text-gray-300">|</span>
+                        <button class="text-gray-400 hover:text-capa-navy transition-colors">ES</button>
+                    </div>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden p-2 text-capa-gray" data-event="click:toggleMobileMenu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- @END_COMPONENT: Header -->
+
+    <!-- Mobile Menu -->
+    <!-- @COMPONENT: MobileMenu [collapsible navigation] -->
+    <div class="lg:hidden bg-white border-b border-gray-100 hidden" data-mock="true" data-state="isMenuOpen">
+        <div class="px-4 py-4 space-y-3">
+            <a href="#home" class="block py-2 text-capa-gray hover:text-capa-navy transition-colors">Home</a>
+            <a href="#research" class="block py-2 text-capa-gray hover:text-capa-navy transition-colors">Research</a>
+            <a href="#team" class="block py-2 text-capa-gray hover:text-capa-navy transition-colors">Team</a>
+            <a href="#news" class="block py-2 text-capa-gray hover:text-capa-navy transition-colors">News</a>
+            <a href="#events" class="block py-2 text-capa-gray hover:text-capa-navy transition-colors">Events</a>
+            <a href="#contact" class="block py-2 text-capa-gray hover:text-capa-navy transition-colors">Contact</a>
+            <div class="pt-3 border-t border-gray-100">
+                <div class="flex space-x-4">
+                    <button class="text-capa-navy font-semibold">English</button>
+                    <button class="text-gray-400">Español</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: MobileMenu -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [banner, mission statement, CTA buttons] -->
+    <section id="home" class="relative bg-gradient-to-br from-capa-navy via-blue-900 to-purple-900 text-white overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <!-- Abstract particle physics visualization pattern -->
+            <svg class="w-full h-full" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="particles" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <circle cx="20" cy="20" r="1" fill="white"/>
+                        <circle cx="80" cy="40" r="0.5" fill="white"/>
+                        <circle cx="50" cy="70" r="1.5" fill="white"/>
+                        <line x1="20" y1="20" x2="50" y2="70" stroke="white" stroke-width="0.3"/>
+                        <line x1="50" y1="70" x2="80" y2="40" stroke="white" stroke-width="0.3"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#particles)"/>
+            </svg>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl lg:text-6xl font-bold leading-tight">
+                            Exploring the 
+                            <span class="text-capa-red">Universe's</span> 
+                            Greatest Mysteries
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-blue-100 font-light">
+                            Center for Astroparticles and High Energy Physics
+                        </p>
+                    </div>
+                    
+                    <p class="text-lg text-blue-100 leading-relaxed max-w-2xl">
+                        CAPA is a leading research institute at the University of Zaragoza, dedicated to advancing our understanding of fundamental physics through cutting-edge research in astroparticles, dark matter, and high-energy phenomena.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-capa-red hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg" data-event="click:exploreResearch">
+                            <i class="fas fa-atom mr-2"></i>
+                            Explore Research
+                        </button>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-capa-navy px-8 py-4 rounded-lg font-semibold transition-all duration-300" data-event="click:joinTeam">
+                            <i class="fas fa-users mr-2"></i>
+                            Join Our Team
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:flex justify-center hidden">
+                    <!-- Abstract scientific visualization -->
+                    <div class="relative w-96 h-96">
+                        <div class="absolute inset-0 rounded-full border-2 border-white opacity-20 animate-pulse"></div>
+                        <div class="absolute inset-4 rounded-full border border-capa-red opacity-40 animate-ping"></div>
+                        <div class="absolute inset-8 rounded-full bg-gradient-to-br from-white to-capa-red opacity-80"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-atom text-6xl text-white opacity-80"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Research Areas -->
+    <!-- @COMPONENT: ResearchAreas [grid of research focus areas] -->
+    <section id="research" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-capa-navy mb-4">Research Areas</h2>
+                <p class="text-xl text-capa-gray max-w-3xl mx-auto">
+                    Our interdisciplinary research spans multiple frontiers of modern physics, from the smallest particles to the largest structures in the universe.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: researchAreas.map(area => ( -->
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-capa-light-blue" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-microscope text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-capa-navy mb-3" data-bind="area.title">Dark Matter Research</h3>
+                    <p class="text-capa-gray leading-relaxed" data-bind="area.description">
+                        Investigating the mysterious dark matter that comprises 85% of all matter in the universe through innovative detection methods and theoretical frameworks.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-capa-light-blue" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-satellite text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-capa-navy mb-3">Cosmic Ray Physics</h3>
+                    <p class="text-capa-gray leading-relaxed">
+                        Studying ultra-high-energy cosmic rays and their origins, using advanced detection arrays and computational modeling to understand these cosmic messengers.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-capa-light-blue" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-atom text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-capa-navy mb-3">Quantum Technologies</h3>
+                    <p class="text-capa-gray leading-relaxed">
+                        Developing cutting-edge quantum technologies for fundamental physics research, including quantum sensors and detection systems.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-capa-light-blue" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-star text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-capa-navy mb-3">Astroparticle Physics</h3>
+                    <p class="text-capa-gray leading-relaxed">
+                        Exploring the intersection of particle physics and astrophysics to understand fundamental processes in extreme cosmic environments.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-capa-light-blue" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-project-diagram text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-capa-navy mb-3">Theoretical Physics</h3>
+                    <p class="text-capa-gray leading-relaxed">
+                        Advancing theoretical frameworks in particle physics, cosmology, and quantum field theory to interpret experimental observations.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-capa-light-blue" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-flask text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-capa-navy mb-3">Experimental Techniques</h3>
+                    <p class="text-capa-gray leading-relaxed">
+                        Developing innovative experimental methods and detector technologies for next-generation physics experiments.
+                    </p>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ResearchAreas -->
+
+    <!-- Latest News -->
+    <!-- @COMPONENT: NewsSection [recent news and announcements] -->
+    <section id="news" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-capa-navy mb-4">Latest News</h2>
+                    <p class="text-xl text-capa-gray">Stay updated with our research developments and achievements</p>
+                </div>
+                <button class="hidden md:flex items-center text-capa-red hover:text-red-700 font-semibold transition-colors" data-event="click:viewAllNews">
+                    View All News
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- @MAP: newsItems.map(news => ( -->
+                <article class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100" data-mock="true">
+                    <!-- Contemporary physics laboratory image -->
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Modern physics laboratory" class="w-full h-48 object-cover" data-bind="news.image" />
+                    <div class="p-6">
+                        <div class="text-sm text-capa-red mb-2" data-bind="news.date">December 15, 2024</div>
+                        <h3 class="text-xl font-semibold text-capa-navy mb-3 line-clamp-2" data-bind="news.title">
+                            Definitive approval of CAPA as UNIZAR Research Institute
+                        </h3>
+                        <p class="text-capa-gray leading-relaxed mb-4" data-bind="news.excerpt">
+                            The Governing Council of the University of Zaragoza has definitively approved the creation of the Center for Astroparticles and High Energies (CAPA), as well as its internal regulations.
+                        </p>
+                        <button class="text-capa-red hover:text-red-700 font-semibold transition-colors" data-event="click:readMore">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100" data-mock="true">
+                    <!-- Quantum physics concept visualization -->
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Quantum physics visualization" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-sm text-capa-red mb-2">December 10, 2024</div>
+                        <h3 class="text-xl font-semibold text-capa-navy mb-3 line-clamp-2">
+                            Dark Quantum in the Tercer Milenio science supplement
+                        </h3>
+                        <p class="text-capa-gray leading-relaxed mb-4">
+                            The DarkQuantum project, coordinated from CAPA, was recently featured in the Tercer Milenio science section of Heraldo de Aragón, highlighting our innovative approach.
+                        </p>
+                        <button class="text-capa-red hover:text-red-700 font-semibold transition-colors">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="bg-gray-50 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100" data-mock="true">
+                    <!-- Cosmic ray detection equipment -->
+                    <img src="https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="Space observatory equipment" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-sm text-capa-red mb-2">December 5, 2024</div>
+                        <h3 class="text-xl font-semibold text-capa-navy mb-3 line-clamp-2">
+                            Ultra-high-energy cosmic messengers
+                        </h3>
+                        <p class="text-capa-gray leading-relaxed mb-4">
+                            Rafael Alves Batista delivered an insightful talk on the origins of the most energetic particles in the Universe and the quest to identify their sources.
+                        </p>
+                        <button class="text-capa-red hover:text-red-700 font-semibold transition-colors">
+                            Read More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </article>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-8 md:hidden">
+                <button class="bg-capa-red text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors">
+                    View All News
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: NewsSection -->
+
+    <!-- Team Section -->
+    <!-- @COMPONENT: TeamSection [research team and leadership] -->
+    <section id="team" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-capa-navy mb-4">Our Research Team</h2>
+                <p class="text-xl text-capa-gray max-w-3xl mx-auto">
+                    Meet the brilliant minds driving cutting-edge research in astroparticle physics and quantum technologies.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- @MAP: teamMembers.map(member => ( -->
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300" data-mock="true">
+                    <!-- Professional academic headshot -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" alt="Dr. Research Leader" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" data-bind="member.photo" />
+                    <h3 class="text-lg font-semibold text-capa-navy mb-1" data-bind="member.name">Dr. María González</h3>
+                    <p class="text-capa-red text-sm font-medium mb-2" data-bind="member.position">Research Director</p>
+                    <p class="text-xs text-capa-gray" data-bind="member.expertise">Dark Matter Physics</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300" data-mock="true">
+                    <!-- Professional academic headshot -->
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" alt="Dr. Research Scientist" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
+                    <h3 class="text-lg font-semibold text-capa-navy mb-1">Dr. Jacobo Asorey</h3>
+                    <p class="text-capa-red text-sm font-medium mb-2">Professor</p>
+                    <p class="text-xs text-capa-gray">Cosmology & Astrophysics</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300" data-mock="true">
+                    <!-- Professional academic headshot -->
+                    <img src="https://pixabay.com/get/gdaf13edcc0bc813b456f8d99f8f51eed08ee243d606d846e8e9be50f65d409168870f103dff10fb9dbfc9d24b6714d85711ced31125b3f351cca5bb965bd6794_1280.jpg" alt="Dr. Research Scientist" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
+                    <h3 class="text-lg font-semibold text-capa-navy mb-1">Dr. Ana Martínez</h3>
+                    <p class="text-capa-red text-sm font-medium mb-2">Senior Researcher</p>
+                    <p class="text-xs text-capa-gray">Quantum Technologies</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-all duration-300" data-mock="true">
+                    <!-- Professional academic headshot -->
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" alt="Dr. Research Scientist" class="w-24 h-24 rounded-full mx-auto mb-4 object-cover" />
+                    <h3 class="text-lg font-semibold text-capa-navy mb-1">Dr. Carlos Ruiz</h3>
+                    <p class="text-capa-red text-sm font-medium mb-2">Postdoc Researcher</p>
+                    <p class="text-xs text-capa-gray">Experimental Physics</p>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center">
+                <button class="bg-capa-navy text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors" data-event="click:viewFullTeam">
+                    <i class="fas fa-users mr-2"></i>
+                    View Full Team
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TeamSection -->
+
+    <!-- Events Section -->
+    <!-- @COMPONENT: EventsSection [upcoming seminars and conferences] -->
+    <section id="events" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-capa-navy mb-4">Upcoming Events</h2>
+                <p class="text-xl text-capa-gray">Join our seminars, conferences, and research presentations</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- @MAP: events.map(event => ( -->
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100" data-mock="true">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="bg-capa-red text-white p-3 rounded-lg text-center min-w-[80px]">
+                                    <div class="text-sm font-medium" data-bind="event.month">JAN</div>
+                                    <div class="text-xl font-bold" data-bind="event.day">15</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-capa-navy" data-bind="event.title">
+                                        DESI-Y1: New light on the dark Universe
+                                    </h3>
+                                    <p class="text-capa-gray" data-bind="event.speaker">
+                                        Speaker: Dr. Eusebio Sánchez, CIEMAT
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-capa-gray leading-relaxed" data-bind="event.description">
+                                Exploring the beginning of the 21st century developments in cosmology and the confirmation of the standard model, LCDM. The Universe composition and dark energy insights.
+                            </p>
+                        </div>
+                        <div class="mt-4 lg:mt-0 lg:ml-6">
+                            <button class="bg-capa-navy text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-900 transition-colors" data-event="click:registerEvent">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100" data-mock="true">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="bg-capa-red text-white p-3 rounded-lg text-center min-w-[80px]">
+                                    <div class="text-sm font-medium">JAN</div>
+                                    <div class="text-xl font-bold">22</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-capa-navy">
+                                        Ultra-high-energy cosmic messengers
+                                    </h3>
+                                    <p class="text-capa-gray">
+                                        Speaker: Dr. Rafael Alves Batista, Institut d'Astrophysique de Paris
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-capa-gray leading-relaxed">
+                                The origins of the most energetic particles in the Universe have been a long-standing puzzle. Understanding their sources and propagation mechanisms.
+                            </p>
+                        </div>
+                        <div class="mt-4 lg:mt-0 lg:ml-6">
+                            <button class="bg-capa-navy text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100" data-mock="true">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="bg-capa-red text-white p-3 rounded-lg text-center min-w-[80px]">
+                                    <div class="text-sm font-medium">FEB</div>
+                                    <div class="text-xl font-bold">05</div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-capa-navy">
+                                        DarkQuantum Project Workshop
+                                    </h3>
+                                    <p class="text-capa-gray">
+                                        CAPA Research Team
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="text-capa-gray leading-relaxed">
+                                Intensive workshop on quantum technologies and particle physics applications. Collaborative research opportunities and latest developments in the field.
+                            </p>
+                        </div>
+                        <div class="mt-4 lg:mt-0 lg:ml-6">
+                            <button class="bg-capa-navy text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-900 transition-colors">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+
+            <div class="text-center mt-8">
+                <button class="text-capa-red hover:text-red-700 font-semibold transition-colors" data-event="click:viewCalendar">
+                    View Full Calendar <i class="fas fa-calendar-alt ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: EventsSection -->
+
+    <!-- Opportunities Section -->
+    <!-- @COMPONENT: OpportunitiesSection [career and collaboration opportunities] -->
+    <section class="py-20 bg-capa-navy text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Join Our Research</h2>
+                <p class="text-xl text-blue-100">Explore opportunities to advance your career in cutting-edge physics research</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-20" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-graduation-cap text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">PhD Positions</h3>
+                    <p class="text-blue-100 leading-relaxed mb-6">
+                        Join our DarkQuantum project with fully-funded PhD positions in astroparticle physics and quantum technologies. Work with world-class researchers on groundbreaking experiments.
+                    </p>
+                    <button class="bg-capa-red hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" data-event="click:applyPhD">
+                        Apply Now
+                    </button>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-20" data-mock="true">
+                    <div class="text-capa-red mb-4">
+                        <i class="fas fa-microscope text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Postdoc Opportunities</h3>
+                    <p class="text-blue-100 leading-relaxed mb-6">
+                        2-3 year postdoctoral contracts available for experienced researchers. Expand your career in our collaborative international research environment.
+                    </p>
+                    <button class="bg-capa-red hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors" data-event="click:applyPostdoc">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: OpportunitiesSection -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact form and location info] -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-capa-navy mb-4">Contact Us</h2>
+                <p class="text-xl text-capa-gray">Get in touch with our research team</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h3 class="text-2xl font-semibold text-capa-navy mb-6">Send us a Message</h3>
+                    <form class="space-y-6" data-implementation="Should validate form before submission">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-capa-gray mb-2">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-capa-navy focus:border-transparent transition-colors" data-bind="form.firstName" />
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-capa-gray mb-2">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-capa-navy focus:border-transparent transition-colors" data-bind="form.lastName" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-capa-gray mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-capa-navy focus:border-transparent transition-colors" data-bind="form.email" />
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-capa-gray mb-2">Subject</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-capa-navy focus:border-transparent transition-colors" data-bind="form.subject">
+                                <option value="">Select a topic</option>
+                                <option value="research">Research Collaboration</option>
+                                <option value="positions">Career Opportunities</option>
+                                <option value="events">Events & Seminars</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-capa-gray mb-2">Message</label>
+                            <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-capa-navy focus:border-transparent transition-colors" data-bind="form.message"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-capa-navy text-white py-3 rounded-lg font-semibold hover:bg-blue-900 transition-colors" data-event="click:submitForm">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-semibold text-capa-navy mb-6">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="text-capa-red mt-1">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-capa-navy">Address</h4>
+                                    <p class="text-capa-gray">
+                                        Universidad de Zaragoza<br>
+                                        Centro de Astropartículas y Física de Altas Energías<br>
+                                        C/ Pedro Cerbuna 12<br>
+                                        50009 Zaragoza, Spain
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-capa-red mt-1">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-capa-navy">Email</h4>
+                                    <p class="text-capa-gray">capa@unizar.es</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="text-capa-red mt-1">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-capa-navy">Phone</h4>
+                                    <p class="text-capa-gray">+34 976 76 1000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div class="bg-white rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-semibold text-capa-navy mb-6">Location</h3>
+                        <div class="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
+                            <!-- University campus aerial view -->
+                            <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400" alt="University campus aerial view" class="w-full h-full object-cover rounded-lg" />
+                        </div>
+                        <p class="text-sm text-capa-gray mt-4">
+                            <!-- TODO: Implement Google Maps integration -->
+                            Located in the heart of Zaragoza, our facilities provide state-of-the-art research infrastructure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [links, social media, copyright] -->
+    <footer class="bg-capa-navy text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="text-white font-bold text-2xl tracking-tight">
+                            C<span class="text-capa-red">A</span>PA
+                        </div>
+                        <div class="text-sm text-blue-100 leading-tight">
+                            <div>Centro de Astropartículas y</div>
+                            <div>Física de Altas Energías</div>
+                        </div>
+                    </div>
+                    <p class="text-blue-100 leading-relaxed mb-6 max-w-md">
+                        Advancing the frontiers of physics through innovative research in astroparticles, dark matter, and quantum technologies.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors" data-event="click:socialMedia">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-blue-100 hover:text-white transition-colors">
+                            <i class="fas fa-rss text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#research" class="text-blue-100 hover:text-white transition-colors">Research Areas</a></li>
+                        <li><a href="#team" class="text-blue-100 hover:text-white transition-colors">Our Team</a></li>
+                        <li><a href="#news" class="text-blue-100 hover:text-white transition-colors">Latest News</a></li>
+                        <li><a href="#events" class="text-blue-100 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="#contact" class="text-blue-100 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors">Publications</a></li>
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors">Collaborations</a></li>
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors">Career Opportunities</a></li>
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors">Press Room</a></li>
+                        <li><a href="#" class="text-blue-100 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center">
+                <p class="text-blue-100">
+                    © 2024 CAPA - Centro de Astropartículas y Física de Altas Energías. Universidad de Zaragoza. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- JavaScript for smooth scrolling and basic interactions -->
+    <script>
+        (function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // TODO: Implement mobile menu toggle functionality
+            // TODO: Implement form validation and submission
+            // TODO: Implement event registration system
+            // TODO: Implement news filtering and pagination
+            // TODO: Implement search functionality
+            // TODO: Implement language switching
+            // TODO: Implement newsletter subscription
+            // TODO: Implement social media integration
+        })();
+    </script>
+</body>
+</html>

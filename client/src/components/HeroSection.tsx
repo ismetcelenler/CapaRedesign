@@ -49,10 +49,10 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                onClick={() => scrollToSection('research')}
-                className="bg-capa-red hover:bg-red-700 text-white px-8 py-4 text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-                data-testid="button-explore-research"
+              <Button
+                  onClick={() => window.location.href = 'https://capa.unizar.es/?lang=en'}
+                  className="bg-capa-red hover:bg-red-700 text-white px-8 py-4 text-base font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  data-testid="button-explore-research"
               >
                 <Atom className="mr-2 h-5 w-5" />
                 {t.hero.exploreResearch}
